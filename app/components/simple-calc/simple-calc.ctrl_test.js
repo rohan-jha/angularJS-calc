@@ -250,8 +250,8 @@ describe('SimpleCalcCtrl', function() {
       });
 
       it('checks if it calculate adds two number', function() {
-        $scope.operand1 = 4;
-        $scope.operand2 = 2;
+        $scope.operand1 = '4';
+        $scope.operand2 = '2';
         $scope.operator = "add";
         $scope.calculate();
         expect( $scope.ioText).toEqual('6');
@@ -259,8 +259,8 @@ describe('SimpleCalcCtrl', function() {
       });
   
       it('checks if it calculate subtract two number', function() {
-        $scope.operand1 = 4;
-        $scope.operand2 = 2;
+        $scope.operand1 = '4';
+        $scope.operand2 = '2';
         $scope.operator = "subtract";
         $scope.calculate();
         expect( $scope.ioText).toEqual('2');
@@ -268,8 +268,8 @@ describe('SimpleCalcCtrl', function() {
       });
 
       it('checks if it calculate multiply two number', function() {
-        $scope.operand1 = 4;
-        $scope.operand2 = 2;
+        $scope.operand1 = '4';
+        $scope.operand2 = '2';
         $scope.operator = "multiply";
         $scope.calculate();
         expect( $scope.ioText).toEqual('8');
@@ -277,8 +277,8 @@ describe('SimpleCalcCtrl', function() {
       });
 
       it('checks if it calculate divide two number', function() {
-        $scope.operand1 = 4;
-        $scope.operand2 = 2;
+        $scope.operand1 = '4';
+        $scope.operand2 = '2';
         $scope.operator = "divide";
         $scope.calculate();
         expect( $scope.ioText).toEqual('2');
@@ -286,12 +286,32 @@ describe('SimpleCalcCtrl', function() {
       });
 
       it('checks if calculate power of two numbers', function() {
-        $scope.operand1 = 4;
-        $scope.operand2 = 2;
+        $scope.operand1 = '4';
+        $scope.operand2 = '2';
         $scope.operator = "power";
         $scope.calculate();
         expect( $scope.ioText).toEqual('16');
         expect( $scope.isCalculated).toEqual(true);
+      });
+
+      it(`checks if operand2 is zero
+        then division output should be Infinity`, function() {
+        $scope.operand1 = '4';
+        $scope.operand2 = '0';
+        $scope.operator = "divide";
+        $scope.calculate();
+        
+        expect( $scope.ioText).toEqual('\u221E');
+        expect( $scope.isCalculated).toEqual(true);
+      });
+
+      it(`checks if operand1 and operand2 both are zero
+        then output should be custome message and should throw error`, function() {
+        $scope.operand1 = '0';
+        $scope.operand2 = '0';
+        $scope.operator = "divide";
+        
+        expect( function(){$scope.calculate()}).toThrow(new Error("0/0 is not a number"));
       });
     });
 });

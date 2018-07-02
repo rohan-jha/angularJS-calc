@@ -29,7 +29,7 @@ Clone the `angularJS-calc` repository using git:
 ```
 git clone https://github.com/rohan-jha/angularJS-calc
 ```
-### Install Dependencies
+### Install Dependenciesc,
 
 We have two kinds of dependencies in this project: tools and Angular framework code. The tools help
 us manage and test the application.

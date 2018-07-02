@@ -36,13 +36,14 @@ angular.module('simpleCalc', []).controller('SimpleCalcCtrl', ['$scope', functio
         }else{
             $scope.operand1 = createOperand($scope.operand1, val);
             $scope.ioText = $scope.operand1?$scope.operand1:$scope.ioText;;
-            $scope.displayText = (val != 'negate')?$scope.ioText:'-'+$scope.displayText;
+            $scope.displayText = (val != 'negate')?$scope.ioText:$scope.displayText.startsWith("-")
+                                    ?$scope.displayText.substring(1, $scope.displayText.length):'-'+$scope.displayText;
         }
     }
 
-    function createOperand(operand, val){
+    function createOperand(operand, val){   
         var returnVal;
-        if(val == 'negate' && operand){
+        if(val === 'negate' && operand){
             returnVal = -operand+'';
         }else{
             returnVal = operand+val;
@@ -57,7 +58,7 @@ angular.module('simpleCalc', []).controller('SimpleCalcCtrl', ['$scope', functio
 
     $scope.putOperator = function(val){
         if (!operatorMap.hasOwnProperty(val)) return;
-        if(val == 'root'){
+        if(val === 'root'){
             if($scope.operand2){
                 let rootVal = calculateRoot($scope.operand2);
                 if(!rootVal) return;
@@ -92,8 +93,8 @@ angular.module('simpleCalc', []).controller('SimpleCalcCtrl', ['$scope', functio
 
     function calculateRoot(operand){
         let rootVal = Math.sqrt(Number.parseFloat(operand));
-        if(isNaN(rootVal)){
-            throw new Error("This is a simple calculator, not an imaginary one :)"); //Cant handle root of negative numbers
+        if(isNaN(rootVal)){ //Cant handle root of negative numbers
+            throw new Error("This is a simple calculator, not an imaginary one :)"); 
         } 
         return rootVal;
     }
@@ -102,15 +103,30 @@ angular.module('simpleCalc', []).controller('SimpleCalcCtrl', ['$scope', functio
         if(!$scope.operator || !$scope.operand1 || !$scope.operand2 || !operatorMap.hasOwnProperty($scope.operator)) return;
         let operand1 = Number.parseFloat($scope.operand1);
         let operand2 = Number.parseFloat($scope.operand2);
-        if($scope.operator == 'power'){
+        if($scope.operator === 'power'){
             $scope.ioText = operand1**operand2;
-        }else if($scope.operator == 'divide'){
+        }else if($scope.operator === 'divide'){
             $scope.ioText = operand1/operand2;
-        }else if($scope.operator == 'multiply'){
+            if($scope.ioText === Infinity){
+                $scope.ioText = '\u221E';
+                $scope.operand1 = '';
+                $scope.operand2 = '';
+                $scope.operator = '';
+                $scope.isCalculated = true;
+                return;
+            }else if(isNaN($scope.ioText)){
+                $scope.ioText = '0/0 Not Allowed';
+                $scope.operand1 = '';
+                $scope.operand2 = '';
+                $scope.operator = '';
+                $scope.isCalculated = true;
+                throw new Error("0/0 is not a number");
+            }
+        }else if($scope.operator === 'multiply'){
             $scope.ioText = operand1*operand2;
-        }else if($scope.operator == 'add'){
+        }else if($scope.operator === 'add'){
             $scope.ioText = operand1+operand2;
-        }else if($scope.operator == 'subtract'){
+        }else if($scope.operator === 'subtract'){
             $scope.ioText = operand1-operand2;
         }
         $scope.ioText +='';
