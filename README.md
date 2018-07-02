@@ -27,7 +27,7 @@ and its package manager (npm) installed. You can get them from [here][node].
 Clone the `angularJS-calc` repository using git:
 
 ```
-git clone https://github.com/angular/angular-seed.git
+git clone https://github.com/rohan-jha/angularJS-calc
 ```
 ### Install Dependencies
 
