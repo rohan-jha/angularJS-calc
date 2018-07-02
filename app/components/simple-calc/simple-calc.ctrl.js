@@ -107,27 +107,27 @@ angular.module('simpleCalc', []).controller('SimpleCalcCtrl', ['$scope', functio
             $scope.ioText = operand1**operand2;
         }else if($scope.operator === 'divide'){
             $scope.ioText = operand1/operand2;
-            if($scope.ioText === Infinity){
-                $scope.ioText = '\u221E';
-                $scope.operand1 = '';
-                $scope.operand2 = '';
-                $scope.operator = '';
-                $scope.isCalculated = true;
-                return;
-            }else if(isNaN($scope.ioText)){
-                $scope.ioText = '0/0 Not Allowed';
-                $scope.operand1 = '';
-                $scope.operand2 = '';
-                $scope.operator = '';
-                $scope.isCalculated = true;
-                throw new Error("0/0 is not a number");
-            }
         }else if($scope.operator === 'multiply'){
             $scope.ioText = operand1*operand2;
         }else if($scope.operator === 'add'){
             $scope.ioText = operand1+operand2;
         }else if($scope.operator === 'subtract'){
             $scope.ioText = operand1-operand2;
+        }
+        if($scope.ioText === Infinity){
+            $scope.ioText = '\u221E';
+            $scope.operand1 = '';
+            $scope.operand2 = '';
+            $scope.operator = '';
+            $scope.isCalculated = true;
+            return;
+        }else if(isNaN($scope.ioText)){
+            $scope.ioText = '0/0 Not Allowed';
+            $scope.operand1 = '';
+            $scope.operand2 = '';
+            $scope.operator = '';
+            $scope.isCalculated = true;
+            throw new Error("0/0 is not a number");
         }
         $scope.ioText +='';
         $scope.operand1 = $scope.ioText;
