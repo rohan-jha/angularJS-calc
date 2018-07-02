@@ -1,0 +1,98 @@
+/* app css stylesheet */
+
+.calc {
+  zoom: 1.5;
+  margin: 20px 20px;
+  padding: 15px;
+  width: 320px;
+  background: #3d4543;
+  border: 1px solid #222;
+  border-radius: 4px;
+  background-color: #313131;
+}
+
+.calc-display {
+  margin: 0 0 20px;
+  padding: 3px;
+  border-radius: 3px;
+}
+
+.calc-display-input {
+  display: block;
+  margin-bottom: -1px;
+  width: 100%;
+  height: 20px;
+  color: #000000;
+  font-size: 8pt;
+  text-align: right;
+  background-clip : padding-box;
+  border: 1px solid #222;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  background-color: #ccc;
+}
+
+.calc-input {
+  display: block;
+  width: 100%;
+  height: 35px;
+  color: #000000;
+  text-align: right;
+  background-clip : padding-box;
+  border: 1px solid #222;
+  border-top-width: 0px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
+  background-color: #ccc;
+}
+
+.calc-row {
+  margin-top: 7px;
+  zoom: 1;
+}
+
+.calc-row:after, .calc-row:before {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.calc-button {
+  float: left;
+  padding: 0;
+  margin: 0 0 0 7px;
+  width: 74px;
+  font: 15px/35px UbuntuMono, monospace;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.4);
+  background: #313131;
+  background-clip: padding-box !important;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  border-radius: 3px;
+  cursor: pointer;
+  background-color: #424242;
+}
+.calc-button:hover{
+  background: #757575 !important;
+}
+.calc-button-number{
+  background-color: #212121 !important;
+}
+
+.calc-button-clear{
+  background-color: #F50057 !important;
+}
+.calc-button-clear:hover{
+  background-color: #EC407A !important;
+}
+
+
+.calc-button:first-child {
+  margin-left: 0;
+}

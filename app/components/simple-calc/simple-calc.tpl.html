@@ -1,0 +1,36 @@
+<div class="calc" ng-controller="SimpleCalcCtrl">
+    <p class="calc-display">
+        <input type="text" name="output" id="res" value="{{displayText}}" class="calc-display-input" disabled>
+        <input type="text" name="output" id="res" value="{{ioText}}" class="calc-input" disabled>
+    </p>
+    <p class="calc-row">
+        <button type="button" class="calc-button calc-button-clear" ng-click='clear()' >C</button>
+        <button type="button" class="calc-button" ng-click='putOperator("root")' >&#8730;</button>
+        <button type="button" class="calc-button" ng-click='putOperator("power")' >^</button>
+        <button type="button" class="calc-button" ng-click='putOperator("divide")' >&#247;</button>
+    </p>
+    <p class="calc-row">
+        <button type="button" class="calc-button calc-button-number" ng-click='putOperand(7)' >7</button>
+        <button type="button" class="calc-button calc-button-number" ng-click='putOperand(8)' >8</button>
+        <button type="button" class="calc-button calc-button-number" ng-click='putOperand(9)' >9</button>
+        <button type="button" class="calc-button" ng-click='putOperator("multiply")' >x</button>
+    </p>
+    <p class="calc-row">
+        <button type="button" class="calc-button calc-button-number" ng-click='putOperand(4)' >4</button>
+        <button type="button" class="calc-button calc-button-number" ng-click='putOperand(5)' >5</button>
+        <button type="button" class="calc-button calc-button-number" ng-click='putOperand(6)' >6</button>
+        <button type="button" class="calc-button" ng-click='putOperator("subtract")' >-</button>
+    </p>
+    <p class="calc-row">
+        <button type="button" class="calc-button calc-button-number" ng-click='putOperand(1)' >1</button>
+        <button type="button" class="calc-button calc-button-number" ng-click='putOperand(2)' >2</button>
+        <button type="button" class="calc-button calc-button-number" ng-click='putOperand(3)' >3</button>
+        <button type="button" class="calc-button" ng-click='putOperator("add")' >+</button>
+    </p>
+    <p class="calc-row">
+        <button type="button" class="calc-button" ng-click='putOperand("negate")' >&#177;</button>
+        <button type="button" class="calc-button calc-button-number" ng-click='putOperand(0)' >0</button>
+        <button type="button" class="calc-button" ng-click='putOperand(".")' >.</button>
+        <button type="button" class="calc-button" ng-click='calculate()' >=</button>
+    </p>
+</div>
